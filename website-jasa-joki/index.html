@@ -14,14 +14,15 @@
     }
 
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #4e54c8, #8f94fb);
       color: #fff;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-y: auto;
     }
 
     .form-container {
@@ -30,7 +31,9 @@
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
       max-width: 400px;
-      width: 90%;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -86,11 +89,10 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 10px;
       text-align: center;
       font-size: 14px;
       color: #ccc;
+      margin-top: 20px;
     }
 
     footer a {
@@ -100,6 +102,15 @@
 
     footer a:hover {
       text-decoration: underline;
+    }
+
+    .note {
+      font-size: 14px;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      color: #ffd700;
     }
 
     /* Animasi fade-in untuk form */
@@ -112,15 +123,6 @@
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    .note {
-      font-size: 14px;
-      margin-top: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px;
-      border-radius: 8px;
-      color: #ffd700;
     }
   </style>
 </head>
