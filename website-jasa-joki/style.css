@@ -1,42 +1,97 @@
-// script.js
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-document.getElementById("generateText").addEventListener("click", async () => {
-    const prompt = document.getElementById("textPrompt").value;
-    const output = document.getElementById("output");
-    
-    if (!prompt) {
-        alert("Masukkan teks terlebih dahulu!");
-        return;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: #fff;
+  overflow-y: auto; /* Fix scroll */
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-    output.innerHTML = "<p>Memproses teks...</p>";
+.form-container {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+  text-align: center;
+}
 
-    try {
-        const response = await puter.ai.chat(prompt);
-        output.innerHTML = `<h3>Hasil Teks:</h3><p>${response}</p>`;
-    } catch (error) {
-        console.error(error);
-        output.innerHTML = "<p>Terjadi kesalahan saat memproses teks.</p>";
-    }
-});
+.form-container h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
 
-document.getElementById("generateImage").addEventListener("click", async () => {
-    const prompt = document.getElementById("textPrompt").value;
-    const output = document.getElementById("output");
+.form-container input,
+.form-container textarea,
+.form-container button {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
 
-    if (!prompt) {
-        alert("Masukkan teks terlebih dahulu!");
-        return;
-    }
+textarea {
+  resize: none;
+  height: 80px;
+}
 
-    output.innerHTML = "<p>Memproses gambar...</p>";
+button {
+  background: linear-gradient(135deg, #ff7b00, #ff3d00);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
 
-    try {
-        const imageElement = await puter.ai.txt2img(prompt);
-        output.innerHTML = "<h3>Hasil Gambar:</h3>";
-        output.appendChild(imageElement);
-    } catch (error) {
-        console.error(error);
-        output.innerHTML = "<p>Terjadi kesalahan saat memproses gambar.</p>";
-    }
-});
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.note {
+  color: #ffd700;
+  font-size: 14px;
+  margin-top: -10px;
+  text-align: left;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+footer a {
+  color: #ffd700;
+  text-decoration: none;
+}
