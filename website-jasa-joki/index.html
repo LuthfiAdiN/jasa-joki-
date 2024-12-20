@@ -126,13 +126,13 @@
   <!-- Tambahkan logo di atas form -->
   <img src="assets/logo.png" alt="Logo Jasa Joki" width="150">
   <h1>Pesan Jasa Joki</h1>
-  <form>
-    <input type="email" placeholder="Email Anda" required>
-    <input type="password" placeholder="Password Akun Moonton" required>
-    <input type="number" placeholder="Durasi Joki (Hari)" required>
-    <textarea placeholder="Request Tambahan"></textarea>
-    <button type="submit">Kirim Pesanan</button>
-  </form>
+  <form action="https://formspree.io/f/manyrlej" method="POST">
+  <input type="email" name="email" placeholder="Email Anda" required>
+  <input type="password" name="password" placeholder="Password Akun Moonton" required>
+  <input type="number" name="duration" placeholder="Durasi Joki (Hari)" required>
+  <textarea name="request" placeholder="Request Tambahan"></textarea>
+  <button type="submit">Kirim Pesanan</button>
+</form>
 </div>
   <footer>
     © 2024 anakayam. Dibuat dengan 💖 oleh <a href="#">Nama Kamu</a>.
