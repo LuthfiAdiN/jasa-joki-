@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jasa Mainin Akun Mobile Legends</title>
-  <!-- Gaya CSS langsung di dalam HTML -->
   <style>
     /* Reset dasar */
     * {
@@ -17,12 +17,13 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #4e54c8, #8f94fb);
       color: #fff;
-      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       min-height: 100vh;
       padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      overflow-y: auto;
     }
 
     .form-container {
@@ -32,11 +33,13 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
       max-width: 400px;
       width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
       animation: fadeIn 1s ease-in-out;
-      text-align: center;
     }
 
     .form-container h1 {
+      text-align: center;
       font-size: 28px;
       margin-bottom: 20px;
       color: #ffd700;
@@ -53,34 +56,67 @@
       font-size: 16px;
     }
 
-    textarea {
+    .form-container input,
+    .form-container textarea {
+      background: #fff;
+      color: #333;
+    }
+
+    .form-container input:focus,
+    .form-container textarea:focus {
+      outline: none;
+      border: 2px solid #ffd700;
+    }
+
+    .form-container button {
+      background: linear-gradient(135deg, #ff7b00, #ff3d00);
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .form-container button:hover {
+      background: linear-gradient(135deg, #ff3d00, #ff7b00);
+      transform: scale(1.05);
+    }
+
+    .form-container button:active {
+      transform: scale(0.95);
+    }
+
+    .form-container textarea {
       resize: none;
       height: 80px;
     }
 
-    button {
-      background: linear-gradient(135deg, #ff7b00, #ff3d00);
-      color: #fff;
-      cursor: pointer;
-      transition: transform 0.3s ease, background 0.3s ease;
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px 0;
     }
 
-    button:hover {
-      transform: scale(1.05);
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
     }
 
-    button:active {
-      transform: scale(0.95);
+    footer a:hover {
+      text-decoration: underline;
     }
 
     .note {
-      color: #ffd700;
       font-size: 14px;
-      margin-top: -10px;
-      text-align: left;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      color: #ffd700;
     }
 
-    /* Animasi */
+    /* Animasi fade-in untuk form */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -91,23 +127,11 @@
         transform: translateY(0);
       }
     }
-
-    footer {
-      text-align: center;
-      margin-top: 20px;
-      color: #ccc;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #ffd700;
-      text-decoration: none;
-    }
   </style>
 </head>
 <body>
   <div class="form-container">
-    <!-- Tambahkan logo -->
+    <!-- Tambahkan logo di atas form -->
     <img src="assets/logo.png" alt="Logo Jasa Mainin Akun" width="150">
     <h1>Jasa Mainin Akun</h1>
 
@@ -134,26 +158,20 @@
     </form>
   </div>
   <footer>
-    © 2024 anakayam. Dibuat dengan 💖 oleh <a href="#">Nama Kamu</a>.
+    © 2024 anakayam. Dibuat dengan 💖 oleh <a href="#">mimin ^ ^</a>.
   </footer>
 
-  <!-- Tambahkan JavaScript langsung di dalam HTML -->
   <script>
     function sendToWhatsApp() {
-      const name = document.getElementById("name").value;
-      const duration = document.getElementById("duration").value;
-      const request = document.getElementById("request").value;
+      const name = document.getElementById('name').value;
+      const duration = document.getElementById('duration').value;
+      const request = document.getElementById('request').value;
 
-      // Format pesan
-      const message = `Halo Admin Anakayam, saya ingin memesan jasa joki.\n\n` +
-                      `Nama: ${name}\n` +
-                      `Durasi Joki: ${duration} hari\n` +
-                      `Request Tambahan: ${request || "Tidak ada"}\n\n` +
-                      `Catatan: *Tidak menerima request hero.*`;
+      const whatsappURL = `https://wa.me/6285176980745?text=${encodeURIComponent(
+        `Halo! Saya ingin menggunakan jasa mainin akun.\n\nNama: ${name}\nDurasi Bermain: ${duration} Hari\nPermintaan Tambahan: ${request || 'Tidak ada.'}\n\nCatatan: Saya memahami bahwa tidak ada jaminan menang karena layanan ini gratis.`
+      )}`;
 
-      // Buka WhatsApp dengan pesan yang diformat
-      const whatsappURL = `https://wa.me/6285176980745?text=${encodeURIComponent(message)}`;
-      window.open(whatsappURL, "_blank");
+      window.open(whatsappURL, '_blank');
     }
   </script>
 </body>
