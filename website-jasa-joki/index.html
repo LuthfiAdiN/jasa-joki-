@@ -122,10 +122,11 @@
 </head>
 <body>
   <div class="form-container">
-    <!-- Tambahkan logo di atas form -->
     <img src="assets/logo.png" alt="Logo Jasa Joki" width="150">
     <h1>Pesan Jasa Joki</h1>
-    <form action="https://formspree.io/f/manyrlej" method="POST">
+    <!-- Form menggunakan Netlify -->
+    <form action="/" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="jasa-joki">
       <input type="email" name="email" placeholder="Email Anda" required>
       <input type="password" name="password" placeholder="Password Akun Moonton" required>
       <input type="number" name="duration" placeholder="Durasi Joki (Hari)" required>
