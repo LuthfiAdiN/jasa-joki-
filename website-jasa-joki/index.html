@@ -125,12 +125,23 @@
     <!-- Tambahkan logo di atas form -->
     <img src="assets/logo.png" alt="Logo Jasa Joki" width="150">
     <h1>Pesan Jasa Joki</h1>
-    <form action="https://formspree.io/f/manyrlej" method="POST">
-      <input type="email" name="email" placeholder="Email Anda" required>
-      <input type="password" name="password" placeholder="Password Akun Moonton" required>
+
+    <!-- Form WhatsApp -->
+    <form action="https://wa.me/6285176980745" method="get" target="_blank">
+      <input type="text" name="name" placeholder="Nama Anda" required>
       <input type="number" name="duration" placeholder="Durasi Joki (Hari)" required>
       <textarea name="request" placeholder="Request Tambahan"></textarea>
-      <button type="submit">Kirim Pesanan</button>
+      <button type="submit">Kirim via WhatsApp</button>
+    </form>
+
+    <hr style="margin: 20px 0; border: 1px solid #fff;">
+
+    <!-- Form FormSubmit -->
+    <form action="https://formsubmit.co/manyrlej" method="POST">
+      <input type="email" name="email" placeholder="Email Anda" required>
+      <input type="text" name="duration" placeholder="Durasi Joki (Hari)" required>
+      <textarea name="request" placeholder="Request Tambahan"></textarea>
+      <button type="submit">Kirim via Email</button>
     </form>
   </div>
   <footer>
