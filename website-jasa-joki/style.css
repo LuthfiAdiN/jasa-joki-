@@ -1,20 +1,20 @@
-/* Gaya dasar website */
-img {
-  display: block;
-  margin: 0 auto 20px; /* Posisi tengah, beri jarak ke bawah */
-  border-radius: 10px; /* Opsional: membuat ujung logo melengkung */
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #4e54c8, #8f94fb);
-  margin: 0;
-  padding: 0;
   color: #fff;
+  overflow-y: auto; /* Fix scroll */
+  min-height: 100vh;
+  padding: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: flex-start;
 }
 
 .form-container {
@@ -23,7 +23,8 @@ body {
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   max-width: 400px;
-  width: 90%;
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
   text-align: center;
 }
 
@@ -33,17 +34,64 @@ body {
   color: #ffd700;
 }
 
+.form-container input,
+.form-container textarea,
+.form-container button {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: none;
+  height: 80px;
+}
+
 button {
   background: linear-gradient(135deg, #ff7b00, #ff3d00);
   color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
-/* Atur tampilan logo */
+
+button:active {
+  transform: scale(0.95);
+}
+
+.note {
+  color: #ffd700;
+  font-size: 14px;
+  margin-top: -10px;
+  text-align: left;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+footer a {
+  color: #ffd700;
+  text-decoration: none;
+}
