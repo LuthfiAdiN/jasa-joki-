@@ -1,56 +1,42 @@
-/* style.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    color: #333;
-}
+// script.js
 
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-}
+document.getElementById("generateText").addEventListener("click", async () => {
+    const prompt = document.getElementById("textPrompt").value;
+    const output = document.getElementById("output");
+    
+    if (!prompt) {
+        alert("Masukkan teks terlebih dahulu!");
+        return;
+    }
 
-h1 {
-    margin-bottom: 20px;
-    color: #007BFF;
-}
+    output.innerHTML = "<p>Memproses teks...</p>";
 
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    try {
+        const response = await puter.ai.chat(prompt);
+        output.innerHTML = `<h3>Hasil Teks:</h3><p>${response}</p>`;
+    } catch (error) {
+        console.error(error);
+        output.innerHTML = "<p>Terjadi kesalahan saat memproses teks.</p>";
+    }
+});
 
-button {
-    padding: 10px 20px;
-    margin: 5px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+document.getElementById("generateImage").addEventListener("click", async () => {
+    const prompt = document.getElementById("textPrompt").value;
+    const output = document.getElementById("output");
 
-button:hover {
-    background: #0056b3;
-}
+    if (!prompt) {
+        alert("Masukkan teks terlebih dahulu!");
+        return;
+    }
 
-.output {
-    margin-top: 20px;
-    text-align: left;
-}
+    output.innerHTML = "<p>Memproses gambar...</p>";
 
-img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-top: 10px;
-}
+    try {
+        const imageElement = await puter.ai.txt2img(prompt);
+        output.innerHTML = "<h3>Hasil Gambar:</h3>";
+        output.appendChild(imageElement);
+    } catch (error) {
+        console.error(error);
+        output.innerHTML = "<p>Terjadi kesalahan saat memproses gambar.</p>";
+    }
+});
