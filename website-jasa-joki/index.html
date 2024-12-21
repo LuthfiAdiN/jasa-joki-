@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anakayam Store</title>
@@ -9,9 +9,8 @@
 </head>
 <body>
   <div class="form-container">
-    <!-- Logo dan nama toko -->
     <div class="logo-header">
-      <img src="assets/logo.png" alt="Logo Anakayam Store" width="100">
+      <img src="assets/logo.png" alt="Logo Anakayam Store" class="logo">
       <div class="store-name">
         <h1>Anakayam Store</h1>
         <p>Jasa Mainin Akun</p>
@@ -22,7 +21,6 @@
       <p>Pastikan akun Anda memiliki hero <b>Argus</b> dan <b>Cecilion</b>. Layanan ini gratis, jadi tidak ada jaminan menang, ya~</p>
     </div>
 
-    <!-- Form WhatsApp -->
     <form id="whatsappForm">
       <input type="text" id="name" placeholder="Nama Anda" required>
       <input type="number" id="duration" placeholder="Durasi Bermain (Hari)" required>
@@ -30,9 +28,6 @@
       <button type="button" onclick="sendToWhatsApp()">Kirim via WhatsApp</button>
     </form>
 
-    <hr>
-
-    <!-- Form Email -->
     <form action="https://formsubmit.co/your_email@example.com" method="POST">
       <input type="email" name="email" placeholder="Email Anda" required>
       <input type="text" name="details" placeholder="Detail Akun (Durasi, Request)" required>
@@ -40,9 +35,11 @@
       <button type="submit">Kirim via Email</button>
     </form>
   </div>
+
   <footer>
     <p>© 2024 Anakayam Store. Dibuat dengan semangat gaming oleh <a href="#">mimin ^ ^</a>.</p>
   </footer>
+  
   <script src="script.js"></script>
 </body>
 </html>
