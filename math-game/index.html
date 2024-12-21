@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Math Fun for Kids</title>
+  <title>Game Matematika</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="game-container">
-    <h1>Math Fun for Kids</h1>
-    <div class="score-board">
-      <p>Score: <span id="score">0</span></p>
-      <p>Level: <span id="level">1</span></p>
-    </div>
-    <div class="question-box">
-      <p id="question">What is 2 + 2?</p>
-      <input type="number" id="answer" placeholder="Enter your answer" />
-      <button id="submit">Submit</button>
-    </div>
-    <p id="feedback"></p>
+  <div class="container">
+    <header>
+      <h1>Game Matematika Anak</h1>
+      <p>Latihan matematika jadi lebih seru!</p>
+    </header>
+    <main>
+      <div id="game-area">
+        <p id="question">Berapa hasil dari 5 × 6?</p>
+        <input type="number" id="answer" placeholder="Jawaban Anda">
+        <button id="submit-btn">Kirim Jawaban</button>
+        <p id="feedback"></p>
+      </div>
+    </main>
+    <footer>
+      <p>© 2024 Dibuat dengan kecintaan untuk belajar. Semua hak dilindungi.</p>
+    </footer>
   </div>
-  <footer>
-    <p>Created with love for learning!</p>
-  </footer>
   <script src="script.js"></script>
 </body>
 </html>
