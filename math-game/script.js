@@ -1,50 +1,38 @@
-let score = 0;
-let level = 1;
+const questionElement = document.getElementById("question");
+const answerInput = document.getElementById("answer");
+const feedbackElement = document.getElementById("feedback");
+const submitButton = document.getElementById("submit-btn");
 
-const questionEl = document.getElementById('question');
-const answerEl = document.getElementById('answer');
-const feedbackEl = document.getElementById('feedback');
-const scoreEl = document.getElementById('score');
-const levelEl = document.getElementById('level');
+const questions = [
+  { question: "5 × 6", answer: 30 },
+  { question: "8 : 4", answer: 2 },
+  { question: "9 × 7", answer: 63 },
+  { question: "12 : 3", answer: 4 },
+];
 
-function generateQuestion() {
-  const num1 = Math.floor(Math.random() * (10 + level)) + 1;
-  const num2 = Math.floor(Math.random() * (10 + level)) + 1;
-  const operations = ['+', '-', '*', '/'];
-  const operation = operations[Math.floor(Math.random() * operations.length)];
-  let question = `${num1} ${operation} ${num2}`;
-  let answer = eval(question);
-  
-  // Ensure answer is a whole number for division
-  if (operation === '/') {
-    question = `${num1 * num2} / ${num1}`;
-    answer = num2;
-  }
-  
-  return { question, answer };
+let currentQuestionIndex = 0;
+
+function loadQuestion() {
+  const currentQuestion = questions[currentQuestionIndex];
+  questionElement.textContent = `Berapa hasil dari ${currentQuestion.question}?`;
 }
 
-let currentQuestion = generateQuestion();
-questionEl.textContent = `What is ${currentQuestion.question}?`;
+function checkAnswer() {
+  const userAnswer = parseInt(answerInput.value);
+  const correctAnswer = questions[currentQuestionIndex].answer;
 
-document.getElementById('submit').addEventListener('click', () => {
-  const userAnswer = parseFloat(answerEl.value);
-  if (userAnswer === currentQuestion.answer) {
-    score += 10;
-    level += 1;
-    feedbackEl.textContent = 'Correct! Great job!';
-    feedbackEl.style.color = 'green';
+  if (userAnswer === correctAnswer) {
+    feedbackElement.textContent = "Jawaban benar! 🎉";
+    feedbackElement.style.color = "green";
+    currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
+    loadQuestion();
   } else {
-    feedbackEl.textContent = `Oops! The correct answer was ${currentQuestion.answer}.`;
-    feedbackEl.style.color = 'red';
+    feedbackElement.textContent = "Jawaban salah. Coba lagi!";
+    feedbackElement.style.color = "red";
   }
 
-  // Update score and level
-  scoreEl.textContent = score;
-  levelEl.textContent = level;
+  answerInput.value = "";
+}
 
-  // Clear input and generate new question
-  answerEl.value = '';
-  currentQuestion = generateQuestion();
-  questionEl.textContent = `What is ${currentQuestion.question}?`;
-});
+submitButton.addEventListener("click", checkAnswer);
+loadQuestion();
