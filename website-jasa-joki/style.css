@@ -1,4 +1,4 @@
-/* Reset dasar */
+/* Reset dan umum */
 * {
   margin: 0;
   padding: 0;
@@ -6,25 +6,23 @@
 }
 
 body {
-  font-family: 'Press Start 2P', cursive;
-  background: linear-gradient(135deg, #141e30, #243b55);
-  color: #00ffcc;
-  overflow-y: auto;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #2a3d5f, #5c6e8f);
+  color: #fff;
   min-height: 100vh;
-  padding: 20px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding: 20px;
 }
 
 .form-container {
   background: rgba(0, 0, 0, 0.85);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 255, 204, 0.5);
-  max-width: 400px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
   width: 100%;
-  animation: fadeIn 1s ease-in-out;
   text-align: center;
 }
 
@@ -32,13 +30,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
 }
 
 .store-name h1 {
-  font-size: 26px;
-  color: #ffd700;
-  letter-spacing: 2px;
+  font-size: 32px;
+  color: #f1c40f;
+  font-weight: 600;
 }
 
 .store-name p {
@@ -50,47 +54,51 @@ input, textarea, button {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-  border: none;
   border-radius: 8px;
-  font-family: 'Press Start 2P', cursive;
+  border: 1px solid #444;
+  font-family: 'Poppins', sans-serif;
 }
 
 input, textarea {
-  background: #1c1c1c;
-  color: #00ffcc;
+  background: #2d3b47;
+  color: #fff;
   font-size: 16px;
 }
 
 button {
-  background: linear-gradient(135deg, #ff005a, #ff7b00);
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
   color: #fff;
+  font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.3s ease;
+  border: none;
 }
 
 button:hover {
+  background: linear-gradient(135deg, #e74c3c, #f39c12);
   transform: scale(1.05);
-  background: linear-gradient(135deg, #ff7b00, #ff005a);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
 .note {
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
   margin-top: 10px;
-  font-size: 14px;
-  color: #fff;
 }
 
 footer {
   text-align: center;
-  margin-top: 20px;
-  color: #00ffcc;
+  margin-top: 40px;
+  color: #fff;
 }
 
 footer a {
-  color: #ffd700;
+  color: #f39c12;
   text-decoration: none;
 }
 
@@ -98,8 +106,22 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Animasi Fade In */
+/* Animasi */
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    padding: 30px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .store-name h1 {
+    font-size: 28px;
+  }
 }
