@@ -1,4 +1,4 @@
-/* Reset dan umum */
+/* Reset dasar */
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +6,9 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #2a3d5f, #5c6e8f);
-  color: #fff;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #ffe4e1, #d3e0ff);
+  color: #444;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -17,10 +17,10 @@ body {
 }
 
 .form-container {
-  background: rgba(0, 0, 0, 0.85);
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   max-width: 500px;
   width: 100%;
   text-align: center;
@@ -40,14 +40,14 @@ body {
 }
 
 .store-name h1 {
-  font-size: 32px;
-  color: #f1c40f;
+  font-size: 28px;
+  color: #ff69b4;
   font-weight: 600;
 }
 
 .store-name p {
   font-size: 16px;
-  color: #fff;
+  color: #444;
 }
 
 input, textarea, button {
@@ -55,50 +55,51 @@ input, textarea, button {
   padding: 12px;
   margin: 10px 0;
   border-radius: 8px;
-  border: 1px solid #444;
-  font-family: 'Poppins', sans-serif;
+  border: 1px solid #ddd;
+  font-size: 14px;
 }
 
 input, textarea {
-  background: #2d3b47;
-  color: #fff;
-  font-size: 16px;
+  background: #f8f9fa;
+  color: #444;
 }
 
 button {
-  background: linear-gradient(135deg, #f39c12, #e74c3c);
+  background: linear-gradient(135deg, #ff69b4, #87ceeb);
   color: #fff;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
   border: none;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 button:hover {
-  background: linear-gradient(135deg, #e74c3c, #f39c12);
   transform: scale(1.05);
+  background: linear-gradient(135deg, #87ceeb, #ff69b4);
 }
 
 textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 80px;
 }
 
 .note {
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #fdf5e6, #faf0e6);
   padding: 15px;
-  border-radius: 8px;
-  margin-top: 10px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  color: #444;
+  font-size: 14px;
 }
 
 footer {
   text-align: center;
-  margin-top: 40px;
-  color: #fff;
+  margin-top: 20px;
+  color: #444;
 }
 
 footer a {
-  color: #f39c12;
+  color: #ff69b4;
   text-decoration: none;
 }
 
@@ -108,20 +109,20 @@ footer a:hover {
 
 /* Animasi */
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-container {
+  animation: fadeIn 1s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
   .form-container {
-    padding: 30px;
-  }
-
-  .logo {
-    width: 60px;
+    padding: 20px;
   }
 
   .store-name h1 {
-    font-size: 28px;
+    font-size: 24px;
   }
 }
