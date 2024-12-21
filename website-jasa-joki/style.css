@@ -9,7 +9,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #4e54c8, #8f94fb);
   color: #fff;
-  overflow-y: auto; /* Fix scroll */
+  overflow-y: auto;
   min-height: 100vh;
   padding: 20px;
   display: flex;
@@ -28,15 +28,15 @@ body {
   text-align: center;
 }
 
-.form-container h1 {
+h1 {
   font-size: 28px;
   margin-bottom: 20px;
   color: #ffd700;
 }
 
-.form-container input,
-.form-container textarea,
-.form-container button {
+input,
+textarea,
+button {
   width: 100%;
   padding: 12px 15px;
   margin: 10px 0;
@@ -70,6 +70,28 @@ button:active {
   font-size: 14px;
   margin-top: -10px;
   text-align: left;
+}
+
+/* Tambahan untuk logo dan nama toko */
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 70px;
+  margin-right: 15px;
+}
+
+.store-name h2 {
+  font-size: 20px;
+  color: #ffd700;
+}
+
+.store-name p {
+  font-size: 14px;
+  color: #ccc;
 }
 
 /* Animasi */
