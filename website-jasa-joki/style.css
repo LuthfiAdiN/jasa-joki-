@@ -6,9 +6,9 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #4e54c8, #8f94fb);
-  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  color: #00ffcc;
   overflow-y: auto;
   min-height: 100vh;
   padding: 20px;
@@ -19,39 +19,48 @@ body {
 
 .form-container {
   background: rgba(0, 0, 0, 0.85);
-  padding: 20px 25px;
+  padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 20px rgba(0, 255, 204, 0.5);
   max-width: 400px;
   width: 100%;
   animation: fadeIn 1s ease-in-out;
   text-align: center;
 }
 
-h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
+.logo-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.store-name h1 {
+  font-size: 20px;
   color: #ffd700;
 }
 
-input,
-textarea,
-button {
+.store-name p {
+  font-size: 14px;
+  color: #fff;
+}
+
+input, textarea, button {
   width: 100%;
-  padding: 12px 15px;
+  padding: 10px;
   margin: 10px 0;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-family: 'Press Start 2P', cursive;
 }
 
-textarea {
-  resize: none;
-  height: 80px;
+input, textarea {
+  background: #1c1c1c;
+  color: #00ffcc;
 }
 
 button {
-  background: linear-gradient(135deg, #ff7b00, #ff3d00);
+  background: linear-gradient(135deg, #ff005a, #ff7b00);
   color: #fff;
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
@@ -59,61 +68,18 @@ button {
 
 button:hover {
   transform: scale(1.05);
-}
-
-button:active {
-  transform: scale(0.95);
+  background: linear-gradient(135deg, #ff7b00, #ff005a);
 }
 
 .note {
-  color: #ffd700;
-  font-size: 14px;
-  margin-top: -10px;
-  text-align: left;
-}
-
-/* Tambahan untuk logo dan nama toko */
-.logo-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.logo {
-  width: 70px;
-  margin-right: 15px;
-}
-
-.store-name h2 {
-  font-size: 20px;
-  color: #ffd700;
-}
-
-.store-name p {
-  font-size: 14px;
-  color: #ccc;
-}
-
-/* Animasi */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
 }
 
 footer {
   text-align: center;
   margin-top: 20px;
-  color: #ccc;
-  font-size: 14px;
-}
-
-footer a {
-  color: #ffd700;
-  text-decoration: none;
+  color: #00ffcc;
 }
