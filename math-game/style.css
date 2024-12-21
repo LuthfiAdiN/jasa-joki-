@@ -94,4 +94,16 @@ footer {
   #question {
     font-size: 1.2rem;
   }
+
+}
+
+/* Sama seperti sebelumnya */
+.hidden {
+  display: none;
+}
+
+#score-timer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
