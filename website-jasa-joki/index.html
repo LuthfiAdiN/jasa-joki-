@@ -8,37 +8,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="form-container">
-    <div class="logo-header">
-      <img src="assets/logo.png" alt="Logo Anakayam Store" class="logo">
-      <div class="store-name">
-        <h1>Anakayam Store</h1>
-        <p>Jasa Mainin Akun</p>
+  <div class="cloud-background">
+    <div class="form-container">
+      <div class="logo-header">
+        <img src="assets/logo.png" alt="Logo Anakayam Store" class="logo">
+        <div class="store-name">
+          <h1>Anakayam Store</h1>
+          <p>Jasa Mainin Akun</p>
+        </div>
       </div>
+
+      <div class="note">
+        <p>Pastikan akun Anda memiliki hero <b>Argus</b> dan <b>Cecilion</b>. Layanan ini gratis, jadi tidak ada jaminan menang, ya~</p>
+      </div>
+
+      <form id="whatsappForm">
+        <input type="text" id="name" placeholder="Nama Anda" required>
+        <input type="number" id="duration" placeholder="Durasi Bermain (Hari)" required>
+        <textarea id="request" placeholder="Permintaan Tambahan"></textarea>
+        <button type="button" onclick="sendToWhatsApp()">Kirim via WhatsApp</button>
+      </form>
+
+      <form action="https://formsubmit.co/your_email@example.com" method="POST">
+        <input type="email" name="email" placeholder="Email Anda" required>
+        <input type="text" name="details" placeholder="Detail Akun (Durasi, Request)" required>
+        <textarea name="request" placeholder="Request Tambahan"></textarea>
+        <button type="submit">Kirim via Email</button>
+      </form>
     </div>
 
-    <div class="note">
-      <p>Pastikan akun Anda memiliki hero <b>Argus</b> dan <b>Cecilion</b>. Layanan ini gratis, jadi tidak ada jaminan menang, ya~</p>
-    </div>
-
-    <form id="whatsappForm">
-      <input type="text" id="name" placeholder="Nama Anda" required>
-      <input type="number" id="duration" placeholder="Durasi Bermain (Hari)" required>
-      <textarea id="request" placeholder="Permintaan Tambahan"></textarea>
-      <button type="button" onclick="sendToWhatsApp()">Kirim via WhatsApp</button>
-    </form>
-
-    <form action="https://formsubmit.co/your_email@example.com" method="POST">
-      <input type="email" name="email" placeholder="Email Anda" required>
-      <input type="text" name="details" placeholder="Detail Akun (Durasi, Request)" required>
-      <textarea name="request" placeholder="Request Tambahan"></textarea>
-      <button type="submit">Kirim via Email</button>
-    </form>
+    <footer>
+      <p>© 2024 Anakayam Store. Dibuat dengan semangat gaming oleh <a href="#">mimin ^ ^</a>.</p>
+    </footer>
   </div>
-
-  <footer>
-    <p>© 2024 Anakayam Store. Dibuat dengan semangat gaming oleh <a href="#">mimin ^ ^</a>.</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
