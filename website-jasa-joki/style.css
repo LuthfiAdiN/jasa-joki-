@@ -7,23 +7,55 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #E3F2FD, #FFF9C4);
-  color: #333;
+  background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+}
+
+.cloud-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cloud-background::before,
+.cloud-background::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.cloud-background::before {
+  width: 200px;
+  height: 80px;
+  top: 10%;
+  left: 20%;
+  box-shadow: 100px 50px 0px #fff, 200px 80px 0px #fff;
+}
+
+.cloud-background::after {
+  width: 150px;
+  height: 60px;
+  bottom: 10%;
+  right: 30%;
+  box-shadow: 80px 40px 0px #fff, 180px 60px 0px #fff;
 }
 
 .form-container {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   max-width: 500px;
   width: 100%;
   text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
 }
 
 .logo-header {
@@ -41,13 +73,13 @@ body {
 
 .store-name h1 {
   font-size: 28px;
-  color: #2196F3;
+  color: #1E88E5;
   font-weight: 600;
 }
 
 .store-name p {
   font-size: 16px;
-  color: #666;
+  color: #555;
 }
 
 input, textarea, button {
@@ -60,12 +92,12 @@ input, textarea, button {
 }
 
 input, textarea {
-  background: #F1F8E9;
+  background: #F5F5F5;
   color: #333;
 }
 
 button {
-  background: linear-gradient(135deg, #42A5F5, #FFD740);
+  background: linear-gradient(135deg, #64B5F6, #FFF176);
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -75,16 +107,11 @@ button {
 
 button:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #FFD740, #42A5F5);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 80px;
+  background: linear-gradient(135deg, #FFF176, #64B5F6);
 }
 
 .note {
-  background: linear-gradient(135deg, #FFF9C4, #E3F2FD);
+  background: #E1F5FE;
   padding: 15px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -99,7 +126,7 @@ footer {
 }
 
 footer a {
-  color: #2196F3;
+  color: #1E88E5;
   text-decoration: none;
 }
 
@@ -111,10 +138,6 @@ footer a:hover {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-.form-container {
-  animation: fadeIn 1s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
