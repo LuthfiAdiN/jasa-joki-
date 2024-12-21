@@ -6,9 +6,9 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #ffe4e1, #d3e0ff);
-  color: #444;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #E3F2FD, #FFF9C4);
+  color: #333;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -17,7 +17,7 @@ body {
 }
 
 .form-container {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -41,13 +41,13 @@ body {
 
 .store-name h1 {
   font-size: 28px;
-  color: #ff69b4;
+  color: #2196F3;
   font-weight: 600;
 }
 
 .store-name p {
   font-size: 16px;
-  color: #444;
+  color: #666;
 }
 
 input, textarea, button {
@@ -60,12 +60,12 @@ input, textarea, button {
 }
 
 input, textarea {
-  background: #f8f9fa;
-  color: #444;
+  background: #F1F8E9;
+  color: #333;
 }
 
 button {
-  background: linear-gradient(135deg, #ff69b4, #87ceeb);
+  background: linear-gradient(135deg, #42A5F5, #FFD740);
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -75,7 +75,7 @@ button {
 
 button:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #87ceeb, #ff69b4);
+  background: linear-gradient(135deg, #FFD740, #42A5F5);
 }
 
 textarea {
@@ -84,7 +84,7 @@ textarea {
 }
 
 .note {
-  background: linear-gradient(135deg, #fdf5e6, #faf0e6);
+  background: linear-gradient(135deg, #FFF9C4, #E3F2FD);
   padding: 15px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -99,7 +99,7 @@ footer {
 }
 
 footer a {
-  color: #ff69b4;
+  color: #2196F3;
   text-decoration: none;
 }
 
