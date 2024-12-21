@@ -3,21 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Matematika</title>
+  <title>Game Matematika Advance</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Game Matematika Anak</h1>
-      <p>Latihan matematika jadi lebih seru!</p>
+      <h1>Game Matematika</h1>
+      <p>Tingkatkan kemampuan berhitungmu!</p>
     </header>
     <main>
       <div id="game-area">
+        <div id="score-timer">
+          <p>Skor: <span id="score">0</span></p>
+          <p>Waktu: <span id="timer">15</span> detik</p>
+        </div>
         <p id="question">Berapa hasil dari 5 × 6?</p>
         <input type="number" id="answer" placeholder="Jawaban Anda">
         <button id="submit-btn">Kirim Jawaban</button>
         <p id="feedback"></p>
+      </div>
+      <div id="result" class="hidden">
+        <h2>Hasil Akhir</h2>
+        <p>Skor Akhir: <span id="final-score"></span></p>
+        <button id="restart-btn">Main Lagi</button>
       </div>
     </main>
     <footer>
