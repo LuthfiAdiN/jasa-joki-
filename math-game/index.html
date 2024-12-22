@@ -1,47 +1,28 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Matematika</title>
+  <title>Math Game</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
   <div id="login-area">
-    <h1>Masuk ke Game Matematika</h1>
-    <input type="text" id="username" placeholder="Username" required>
-    <input type="password" id="password" placeholder="Password" required>
-    <button id="login-btn">Login</button>
-    <p id="login-feedback"></p>
+    <h1>Math Game Login</h1>
+    <div id="login-feedback"></div>
+    <input type="text" id="login-username" placeholder="Masukkan Username" required>
+    <input type="password" id="login-password" placeholder="Masukkan Password" required>
+    <button id="login-button">Login</button>
   </div>
 
   <div id="game-area" class="hidden">
-    <div id="question-container">
-      <p id="question"></p>
-      <input type="number" id="answer" placeholder="Jawaban Anda">
-      <button id="submit-btn">Jawab</button>
-      <p id="feedback"></p>
-    </div>
-    <div id="scoreboard">
-      <p>Score: <span id="score">0</span></p>
-      <p>Timer: <span id="timer">15</span> detik</p>
-    </div>
+    <h1>Math Game</h1>
+    <div id="question-area"></div>
+    <input type="text" id="answer-input" placeholder="Jawaban Anda">
+    <button id="submit-answer">Submit</button>
+    <p id="score-display">Skor: 0</p>
+    <button id="restart-button">Restart</button>
   </div>
-
-  <div id="result" class="hidden">
-    <h2>Game Selesai!</h2>
-    <p>Skor Akhir: <span id="final-score"></span></p>
-    <p>Highscore: <span id="high-score"></span></p>
-    <button id="restart-btn">Main Lagi</button>
-    <button id="show-leaderboard-btn">Lihat Leaderboard</button>
-  </div>
-
-  <div id="leaderboard-area" class="hidden">
-    <h2>Leaderboard</h2>
-    <ol id="leaderboard-list"></ol>
-    <button id="back-to-game-btn">Kembali ke Game</button>
-  </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
