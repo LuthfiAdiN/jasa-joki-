@@ -9,6 +9,7 @@ const timePerQuestion = 15;
 const loginArea = document.getElementById("login-area");
 const gameArea = document.getElementById("game-area");
 const resultArea = document.getElementById("result");
+const leaderboardArea = document.getElementById("leaderboard-area");
 
 const questionElement = document.getElementById("question");
 const answerInput = document.getElementById("answer");
@@ -24,7 +25,15 @@ const loginFeedback = document.getElementById("login-feedback");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 
+const leaderboardList = document.getElementById("leaderboard-list");
+const backToGameButton = document.getElementById("back-to-game-btn");
+
 let currentUser = null;
+const users = {
+  // Format: username: password
+  "user1": "password1",
+  "user2": "password2",
+};
 
 function generateQuestions(totalQuestions) {
   const generatedQuestions = [];
@@ -129,6 +138,30 @@ function endGame() {
   }
 
   highScoreElement.textContent = highScore;
+
+  updateLeaderboard();
+}
+
+function updateLeaderboard() {
+  leaderboardList.innerHTML = "";
+
+  const usersScores = [];
+  for (const key in localStorage) {
+    if (key.includes("-highScore")) {
+      usersScores.push({
+        username: key.split("-")[0],
+        score: parseInt(localStorage[key]),
+      });
+    }
+  }
+
+  usersScores
+    .sort((a, b) => b.score - a.score)
+    .forEach(user => {
+      const listItem = document.createElement("li");
+      listItem.textContent = `${user.username}: ${user.score}`;
+      leaderboardList.appendChild(listItem);
+    });
 }
 
 function restartGame() {
@@ -144,21 +177,24 @@ function loginUser() {
   const username = usernameInput.value.trim();
   const password = passwordInput.value.trim();
 
-  if (username === "" || password === "") {
-    loginFeedback.textContent = "Username dan Password tidak boleh kosong.";
+  if (users[username] && users[username] === password) {
+    currentUser = username;
+    highScore = parseInt(localStorage.getItem(`${currentUser}-highScore`)) || 0;
+
+    loginArea.classList.add("hidden");
+    gameArea.classList.remove("hidden");
+
+    loadQuestion();
+  } else {
+    loginFeedback.textContent = "Username atau Password salah.";
     loginFeedback.style.color = "red";
-    return;
   }
-
-  currentUser = username;
-  highScore = parseInt(localStorage.getItem(`${currentUser}-highScore`)) || 0;
-
-  loginArea.classList.add("hidden");
-  gameArea.classList.remove("hidden");
-
-  loadQuestion();
 }
 
 loginButton.addEventListener("click", loginUser);
 submitButton.addEventListener("click", checkAnswer);
 restartButton.addEventListener("click", restartGame);
+backToGameButton.addEventListener("click", () => {
+  leaderboardArea.classList.add("hidden");
+  gameArea.classList.remove("hidden");
+});
