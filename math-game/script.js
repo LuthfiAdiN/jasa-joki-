@@ -1,123 +1,135 @@
-let accounts = JSON.parse(localStorage.getItem("accounts")) || {};
+// Simpan data pengguna dan leaderboard
+let users = {};
 let currentUser = null;
 
-const loginArea = document.getElementById("login-area");
-const gameArea = document.getElementById("game-area");
-const loginButton = document.getElementById("login-button");
-const loginFeedback = document.getElementById("login-feedback");
-const questionArea = document.getElementById("question-area");
-const answerInput = document.getElementById("answer-input");
-const submitAnswer = document.getElementById("submit-answer");
-const currentScoreDisplay = document.getElementById("current-score");
-const highScoreDisplay = document.getElementById("high-score");
-const notification = document.getElementById("notification");
-
-let currentQuestion = null;
-let score = 0;
-
-function loginUser() {
-  const username = document.getElementById("login-username").value.trim();
-  const password = document.getElementById("login-password").value;
+// Login function
+function login() {
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
 
   if (!username || !password) {
-    loginFeedback.textContent = "Username dan Password harus diisi!";
+    document.getElementById('login-message').textContent = "Username dan password harus diisi!";
     return;
   }
 
-  if (accounts[username]) {
-    if (accounts[username].password === password) {
-      currentUser = username;
-      score = 0; // Skor dimulai dari nol
-      highScoreDisplay.textContent = accounts[username].highScore || 0;
-      loginArea.classList.add("hidden");
-      gameArea.classList.remove("hidden");
-      loadQuestion();
-    } else {
-      loginFeedback.textContent = "Password salah!";
-    }
+  if (!users[username]) {
+    users[username] = { password, highscore: 0 };
+    document.getElementById('login-message').textContent = "Akun baru dibuat. Login berhasil!";
+  } else if (users[username].password !== password) {
+    document.getElementById('login-message').textContent = "Password salah!";
+    return;
   } else {
-    accounts[username] = { password, highScore: 0 };
-    localStorage.setItem("accounts", JSON.stringify(accounts));
-    currentUser = username;
-    score = 0;
-    highScoreDisplay.textContent = 0;
-    loginArea.classList.add("hidden");
-    gameArea.classList.remove("hidden");
-    loadQuestion();
+    document.getElementById('login-message').textContent = "Login berhasil!";
   }
+
+  currentUser = username;
+  showLevelSelection();
 }
 
-function generateQuestion() {
-  const randomOperator = ["+", "-", "*", "/"][Math.floor(Math.random() * 4)];
-  let num1, num2, answer;
+// Logout function
+function logout() {
+  currentUser = null;
+  document.getElementById('leaderboard-container').style.display = "none";
+  document.getElementById('login-container').style.display = "block";
+}
 
-  switch (randomOperator) {
+// Show level selection
+function showLevelSelection() {
+  document.getElementById('login-container').style.display = "none";
+  document.getElementById('level-selection').style.display = "block";
+}
+
+// Game variables
+let score = 0;
+let highscore = 0;
+let timer;
+let currentLevel = "medium";
+
+// Start game
+function startGame(level) {
+  currentLevel = level;
+  score = 0;
+  highscore = users[currentUser]?.highscore || 0;
+  document.getElementById('score').textContent = score;
+  document.getElementById('highscore').textContent = highscore;
+  document.getElementById('level-selection').style.display = "none";
+  document.getElementById('game-container').style.display = "block";
+  generateQuestion();
+}
+
+// Generate question
+function generateQuestion() {
+  const [num1, num2] = getRandomNumbers(currentLevel);
+  const operators = currentLevel === "easy" ? ["+", "-"] : ["+", "-", "×", ":"];
+  const operator = operators[Math.floor(Math.random() * operators.length)];
+
+  let question, answer;
+
+  switch (operator) {
     case "+":
-      num1 = Math.floor(Math.random() * 90) + 10; // Puluhan
-      num2 = Math.floor(Math.random() * 90) + 10;
+      question = `${num1} + ${num2}`;
       answer = num1 + num2;
       break;
     case "-":
-      num1 = Math.floor(Math.random() * 90) + 10;
-      num2 = Math.floor(Math.random() * 90) + 10;
-      if (num1 < num2) [num1, num2] = [num2, num1];
+      question = `${num1} - ${num2}`;
       answer = num1 - num2;
       break;
-    case "*":
-      num1 = Math.floor(Math.random() * 9) + 1; // Satuan
-      num2 = Math.floor(Math.random() * 9) + 1;
+    case "×":
+      question = `${num1} × ${num2}`;
       answer = num1 * num2;
       break;
-    case "/":
-      do {
-        num1 = Math.floor(Math.random() * 90) + 10; // Puluhan
-        num2 = Math.floor(Math.random() * 9) + 1; // Satuan
-      } while (num1 % num2 !== 0); // Ulangi sampai hasil pembagian bulat
+    case ":":
+      question = `${num1} : ${num2}`;
       answer = num1 / num2;
       break;
   }
 
-  return {
-    question: `${num1} ${randomOperator === "*" ? "×" : randomOperator === "/" ? ":" : randomOperator} ${num2}`,
-    answer,
-  };
+  document.getElementById('question').textContent = question;
+  document.getElementById('question').dataset.answer = answer;
 }
 
-function loadQuestion() {
-  currentQuestion = generateQuestion();
-  questionArea.textContent = currentQuestion.question;
-  answerInput.value = "";
-}
-
-function checkAnswer() {
-  const userAnswer = parseInt(answerInput.value.trim());
-  if (userAnswer === currentQuestion.answer) {
-    score += 10;
-    currentScoreDisplay.textContent = score;
-
-    if (score > accounts[currentUser].highScore) {
-      accounts[currentUser].highScore = score;
-      highScoreDisplay.textContent = score;
-      localStorage.setItem("accounts", JSON.stringify(accounts));
-    }
-
-    loadQuestion();
+// Get random numbers based on level
+function getRandomNumbers(level) {
+  if (level === "easy") {
+    return [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
   } else {
-    notification.textContent = `Salah! Skor akhir: ${score}`;
-    notification.classList.remove("hidden");
-
-    setTimeout(() => {
-      notification.classList.add("hidden");
-      resetGame();
-    }, 2000);
+    return [Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 15) + 1];
   }
 }
 
-function resetGame() {
-  score = 0;
-  currentScoreDisplay.textContent = score;
-  loadQuestion();
+// Submit answer
+function submitAnswer() {
+  const userAnswer = parseFloat(document.getElementById('answer').value);
+  const correctAnswer = parseFloat(document.getElementById('question').dataset.answer);
+
+  if (userAnswer === correctAnswer) {
+    score++;
+    if (score > highscore) {
+      highscore = score;
+      users[currentUser].highscore = highscore;
+    }
+    document.getElementById('score').textContent = score;
+    document.getElementById('highscore').textContent = highscore;
+    generateQuestion();
+  } else {
+    alert("Jawaban salah! Skor Anda: " + score);
+    showLeaderboard();
+  }
+
+  document.getElementById('answer').value = "";
 }
 
-loginButton.addEventListener("click", loginUser);
-submitAnswer.addEventListener("click", checkAnswer);
+// Show leaderboard
+function showLeaderboard() {
+  const leaderboard = Object.keys(users)
+    .map(username => ({ username, highscore: users[username].highscore }))
+    .sort((a, b) => b.highscore - a.highscore);
+
+  const leaderboardList = document.getElementById('leaderboard-list');
+  leaderboardList.innerHTML = leaderboard
+    .map(user => `<li>${user.username}: ${user.highscore}</li>`)
+    .join("");
+
+  document.getElementById('game-container').style.display = "none";
+  document.getElementById('leaderboard-container').style.display = "block";
+}
