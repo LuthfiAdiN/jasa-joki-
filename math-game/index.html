@@ -5,27 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Math Game</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
 </head>
 <body>
-  <div id="login-area">
-    <h1>Math Game Login</h1>
-    <div id="login-feedback"></div>
-    <input type="text" id="login-username" placeholder="Masukkan Username" required>
-    <input type="password" id="login-password" placeholder="Masukkan Password" required>
-    <button id="login-button">Login</button>
+  <!-- Login Section -->
+  <div id="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="login-message"></p>
   </div>
 
-  <div id="game-area" class="hidden">
-    <h1>Math Game</h1>
-    <div id="question-area"></div>
-    <input type="text" id="answer-input" placeholder="Jawaban Anda">
-    <button id="submit-answer">Submit</button>
-    <div id="score-display">
-      <p>Skor: <span id="current-score">0</span></p>
-      <p>Highscore: <span id="high-score">0</span></p>
-    </div>
-    <div id="notification" class="hidden"></div>
+  <!-- Level Selection -->
+  <div id="level-selection" style="display: none;">
+    <h2>Pilih Tingkat Kesulitan</h2>
+    <button onclick="startGame('easy')">Mudah</button>
+    <button onclick="startGame('medium')">Sedang</button>
   </div>
+
+  <!-- Game Section -->
+  <div id="game-container" style="display: none;">
+    <h2 id="question"></h2>
+    <input type="number" id="answer" placeholder="Jawaban Anda">
+    <button onclick="submitAnswer()">Jawab</button>
+    <p>Skor: <span id="score">0</span></p>
+    <p>Highscore: <span id="highscore">0</span></p>
+  </div>
+
+  <!-- Leaderboard Section -->
+  <div id="leaderboard-container" style="display: none;">
+    <h2>Leaderboard</h2>
+    <ul id="leaderboard-list"></ul>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
