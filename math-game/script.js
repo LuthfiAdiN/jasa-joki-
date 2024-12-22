@@ -15,33 +15,48 @@ const resultSection = document.getElementById("result");
 const finalScoreElement = document.getElementById("final-score");
 const restartButton = document.getElementById("restart-btn");
 
-function generateQuestions(totalQuestions, level = "easy") {
+function generateQuestions(totalQuestions) {
   const generatedQuestions = [];
-  let maxNumber = 10;
-
-  if (level === "medium") maxNumber = 50;
-  if (level === "hard") maxNumber = 100;
 
   for (let i = 0; i < totalQuestions; i++) {
-    const num1 = Math.floor(Math.random() * maxNumber) + 1;
-    const num2 = Math.floor(Math.random() * maxNumber) + 1;
-    const operation = Math.random() > 0.5 ? "×" : ":";
+    const operation = ["+", "-", "×", ":"];
+    const chosenOperation = operation[Math.floor(Math.random() * operation.length)];
 
-    let question, answer;
-    if (operation === "×") {
+    let num1, num2, question, answer;
+
+    if (chosenOperation === "+") {
+      num1 = Math.floor(Math.random() * 900) + 100; // Ratusan
+      num2 = Math.floor(Math.random() * 900) + 100; // Ratusan
+      question = `${num1} + ${num2}`;
+      answer = num1 + num2;
+
+    } else if (chosenOperation === "-") {
+      num1 = Math.floor(Math.random() * 900) + 100;
+      num2 = Math.floor(Math.random() * 900) + 100;
+      if (num1 < num2) [num1, num2] = [num2, num1];
+      question = `${num1} - ${num2}`;
+      answer = num1 - num2;
+
+    } else if (chosenOperation === "×") {
+      num1 = Math.floor(Math.random() * 20) + 1; // Belasan
+      num2 = Math.floor(Math.random() * 20) + 1;
       question = `${num1} × ${num2}`;
       answer = num1 * num2;
-    } else {
-      question = `${num1 * num2} : ${num2}`;
-      answer = num1;
+
+    } else if (chosenOperation === ":") {
+      num2 = Math.floor(Math.random() * 9) + 1; // Angka 1-9 (divisor)
+      num1 = num2 * (Math.floor(Math.random() * 10) + 1); // Bilangan bulat
+      question = `${num1} : ${num2}`;
+      answer = num1 / num2;
     }
 
     generatedQuestions.push({ question, answer });
   }
+
   return generatedQuestions;
 }
 
-const questions = generateQuestions(totalQuestions, "medium");
+const questions = generateQuestions(totalQuestions);
 
 function loadQuestion() {
   if (currentQuestionIndex >= questions.length) {
@@ -51,6 +66,7 @@ function loadQuestion() {
 
   const currentQuestion = questions[currentQuestionIndex];
   questionElement.textContent = `Berapa hasil dari ${currentQuestion.question}?`;
+  answerInput.value = "";
   resetTimer();
 }
 
