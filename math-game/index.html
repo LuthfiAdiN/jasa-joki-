@@ -21,8 +21,11 @@
     <div id="question-area"></div>
     <input type="text" id="answer-input" placeholder="Jawaban Anda">
     <button id="submit-answer">Submit</button>
-    <p id="score-display">Skor: 0</p>
-    <button id="restart-button">Restart</button>
+    <div id="score-display">
+      <p>Skor: <span id="current-score">0</span></p>
+      <p>Highscore: <span id="high-score">0</span></p>
+    </div>
+    <div id="notification" class="hidden"></div>
   </div>
 </body>
 </html>
