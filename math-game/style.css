@@ -1,135 +1,164 @@
-// Simpan data pengguna dan leaderboard
-let users = {};
-let currentUser = null;
+/* Reset Dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-// Login function
-function login() {
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #4facfe, #00f2fe);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
-  if (!username || !password) {
-    document.getElementById('login-message').textContent = "Username dan password harus diisi!";
-    return;
+/* Container Utama */
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Judul */
+h1, h2 {
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Input dan Tombol */
+input[type="text"], input[type="password"], input[type="number"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #3b82f6, #6ee7b7);
+  transform: scale(1.05);
+}
+
+/* Game Area */
+#game-container {
+  display: none;
+}
+
+#question {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#answer {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #3b82f6;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+#scoreboard {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+/* Notifikasi */
+#login-message, #notif {
+  margin: 10px 0;
+  color: red;
+  font-weight: bold;
+  display: none;
+}
+
+#notif.success {
+  color: green;
+}
+
+/* Leaderboard */
+#leaderboard-container {
+  display: none;
+}
+
+#leaderboard-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+#leaderboard-list li {
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+#leaderboard-container h2 {
+  margin-bottom: 10px;
+}
+
+/* Level Selection */
+#level-selection {
+  display: none;
+}
+
+.level-button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f97316, #facc15);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.level-button:hover {
+  background: linear-gradient(135deg, #facc15, #f97316);
+  transform: scale(1.05);
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-
-  if (!users[username]) {
-    users[username] = { password, highscore: 0 };
-    document.getElementById('login-message').textContent = "Akun baru dibuat. Login berhasil!";
-  } else if (users[username].password !== password) {
-    document.getElementById('login-message').textContent = "Password salah!";
-    return;
-  } else {
-    document.getElementById('login-message').textContent = "Login berhasil!";
-  }
-
-  currentUser = username;
-  showLevelSelection();
-}
-
-// Logout function
-function logout() {
-  currentUser = null;
-  document.getElementById('leaderboard-container').style.display = "none";
-  document.getElementById('login-container').style.display = "block";
-}
-
-// Show level selection
-function showLevelSelection() {
-  document.getElementById('login-container').style.display = "none";
-  document.getElementById('level-selection').style.display = "block";
-}
-
-// Game variables
-let score = 0;
-let highscore = 0;
-let timer;
-let currentLevel = "medium";
-
-// Start game
-function startGame(level) {
-  currentLevel = level;
-  score = 0;
-  highscore = users[currentUser]?.highscore || 0;
-  document.getElementById('score').textContent = score;
-  document.getElementById('highscore').textContent = highscore;
-  document.getElementById('level-selection').style.display = "none";
-  document.getElementById('game-container').style.display = "block";
-  generateQuestion();
-}
-
-// Generate question
-function generateQuestion() {
-  const [num1, num2] = getRandomNumbers(currentLevel);
-  const operators = currentLevel === "easy" ? ["+", "-"] : ["+", "-", "×", ":"];
-  const operator = operators[Math.floor(Math.random() * operators.length)];
-
-  let question, answer;
-
-  switch (operator) {
-    case "+":
-      question = `${num1} + ${num2}`;
-      answer = num1 + num2;
-      break;
-    case "-":
-      question = `${num1} - ${num2}`;
-      answer = num1 - num2;
-      break;
-    case "×":
-      question = `${num1} × ${num2}`;
-      answer = num1 * num2;
-      break;
-    case ":":
-      question = `${num1} : ${num2}`;
-      answer = num1 / num2;
-      break;
-  }
-
-  document.getElementById('question').textContent = question;
-  document.getElementById('question').dataset.answer = answer;
-}
-
-// Get random numbers based on level
-function getRandomNumbers(level) {
-  if (level === "easy") {
-    return [Math.floor(Math.random() * 10) + 1, Math.floor(Math.random() * 10) + 1];
-  } else {
-    return [Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 15) + 1];
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-// Submit answer
-function submitAnswer() {
-  const userAnswer = parseFloat(document.getElementById('answer').value);
-  const correctAnswer = parseFloat(document.getElementById('question').dataset.answer);
-
-  if (userAnswer === correctAnswer) {
-    score++;
-    if (score > highscore) {
-      highscore = score;
-      users[currentUser].highscore = highscore;
-    }
-    document.getElementById('score').textContent = score;
-    document.getElementById('highscore').textContent = highscore;
-    generateQuestion();
-  } else {
-    alert("Jawaban salah! Skor Anda: " + score);
-    showLeaderboard();
-  }
-
-  document.getElementById('answer').value = "";
-}
-
-// Show leaderboard
-function showLeaderboard() {
-  const leaderboard = Object.keys(users)
-    .map(username => ({ username, highscore: users[username].highscore }))
-    .sort((a, b) => b.highscore - a.highscore);
-
-  const leaderboardList = document.getElementById('leaderboard-list');
-  leaderboardList.innerHTML = leaderboard
-    .map(user => `<li>${user.username}: ${user.highscore}</li>`)
-    .join("");
-
-  document.getElementById('game-container').style.display = "none";
-  document.getElementById('leaderboard-container').style.display = "block";
+.container {
+  animation: fadeIn 0.8s ease-in-out;
 }
