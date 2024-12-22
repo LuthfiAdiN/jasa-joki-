@@ -69,13 +69,18 @@ function generateQuestion() {
       answer = num1 * num2;
       break;
     case "/":
-      num1 = (Math.floor(Math.random() * 9) + 1) * 2;
-      num2 = Math.floor(Math.random() * 9) + 1;
+      do {
+        num1 = Math.floor(Math.random() * 90) + 10; // Puluhan
+        num2 = Math.floor(Math.random() * 9) + 1; // Satuan
+      } while (num1 % num2 !== 0); // Ulangi sampai hasil pembagian bulat
       answer = num1 / num2;
       break;
   }
 
-  return { question: `${num1} ${randomOperator === "*" ? "×" : randomOperator === "/" ? ":" : randomOperator} ${num2}`, answer };
+  return {
+    question: `${num1} ${randomOperator === "*" ? "×" : randomOperator === "/" ? ":" : randomOperator} ${num2}`,
+    answer,
+  };
 }
 
 function loadQuestion() {
