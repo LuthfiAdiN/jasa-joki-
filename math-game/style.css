@@ -29,15 +29,8 @@ header h1 {
   color: #4a90e2;
 }
 
-#score-timer {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-#question {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+.hidden {
+  display: none;
 }
 
 input, button {
@@ -66,4 +59,12 @@ button:hover {
 footer {
   margin-top: 20px;
   font-size: 0.9rem;
+}
+
+#feedback {
+  font-size: 0.9rem;
+}
+
+#login-area h2 {
+  margin-bottom: 20px;
 }
