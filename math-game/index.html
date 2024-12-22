@@ -13,7 +13,15 @@
       <p>Asah kemampuan berhitungmu dengan seru!</p>
     </header>
     <main>
-      <div id="game-area">
+      <div id="login-area">
+        <h2>Login Akun</h2>
+        <input type="text" id="username" placeholder="Masukkan Username">
+        <input type="password" id="password" placeholder="Masukkan Password">
+        <button id="login-btn">Login</button>
+        <p id="login-feedback"></p>
+      </div>
+
+      <div id="game-area" class="hidden">
         <div id="score-timer">
           <p>Skor: <span id="score">0</span></p>
           <p>Waktu: <span id="timer">15</span> detik</p>
@@ -23,9 +31,11 @@
         <button id="submit-btn">Kirim Jawaban</button>
         <p id="feedback"></p>
       </div>
+
       <div id="result" class="hidden">
         <h2>Hasil Akhir</h2>
         <p>Skor Akhir: <span id="final-score"></span></p>
+        <p>Skor Tertinggi: <span id="high-score"></span></p>
         <button id="restart-btn">Main Lagi</button>
       </div>
     </main>
