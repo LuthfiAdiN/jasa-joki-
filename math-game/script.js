@@ -1,14 +1,46 @@
-// Daftar variabel global
-let username = '';
-let password = '';
-let currentLevel = 'medium';
-let score = 0;
+// Variabel Global
+let username = null;
 let highScore = 0;
-let timer = null;
+let score = 0;
 
+// Fungsi Login
+function login() {
+  const userInput = document.getElementById('username').value.trim();
+  const passInput = document.getElementById('password').value;
+
+  const storedPassword = localStorage.getItem(userInput);
+
+  if (storedPassword && storedPassword === passInput) {
+    username = userInput;
+    highScore = parseInt(localStorage.getItem(`${username}-highscore`)) || 0;
+
+    document.getElementById('login-container').style.display = 'none';
+    document.getElementById('level-selection').style.display = 'block';
+    document.getElementById('highscore-display').innerText = highScore;
+    alert(`Selamat datang, ${username}!`);
+  } else {
+    document.getElementById('login-message').innerText = 'Username atau password salah!';
+    document.getElementById('login-message').style.display = 'block';
+  }
 }
 
-  // Simpan akun baru ke localStorage
+// Fungsi Registrasi Akun Baru
+function register() {
+  const userInput = document.getElementById('username').value.trim();
+  const passInput = document.getElementById('password').value;
+
+  if (!userInput || !passInput) {
+    document.getElementById('login-message').innerText = 'Username dan password tidak boleh kosong!';
+    document.getElementById('login-message').style.display = 'block';
+    return;
+  }
+
+  if (localStorage.getItem(userInput)) {
+    document.getElementById('login-message').innerText = 'Username sudah terdaftar!';
+    document.getElementById('login-message').style.display = 'block';
+    return;
+  }
+
   localStorage.setItem(userInput, passInput);
   localStorage.setItem(`${userInput}-highscore`, 0);
 
@@ -26,88 +58,91 @@ function logout() {
   alert('Anda telah logout.');
 }
 
+// Event Listener untuk Tombol
+document.getElementById('login-btn').addEventListener('click', login);
+document.getElementById('register-btn').addEventListener('click', register);
+document.getElementById('logout-btn').addEventListener('click', logout);
+
+// Variabel Global untuk Game
+let currentQuestion = {};
+let difficulty = 'medium';
+
+// Fungsi Random Angka
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Fungsi untuk Menghasilkan Soal Berdasarkan Kesulitan
+function generateQuestion(difficulty) {
+  let num1, num2, operator, question, answer;
+
+  if (difficulty === 'easy') {
+    num1 = getRandomInt(1, 9);
+    num2 = getRandomInt(1, 9);
+  } else if (difficulty === 'medium') {
+    num1 = getRandomInt(1, 9);
+    num2 = getRandomInt(1, 9);
+  }
+
+  const operators = ['+', '-', '×'];
+  operator = operators[getRandomInt(0, operators.length - 1)];
+
+  if (operator === '+') {
+    answer = num1 + num2;
+    question = `${num1} + ${num2}`;
+  } else if (operator === '-') {
+    answer = num1 - num2;
+    question = `${num1} - ${num2}`;
+  } else if (operator === '×') {
+    answer = num1 * num2;
+    question = `${num1} × ${num2}`;
+  }
+
+  return { question, answer };
+}
+
 // Fungsi Mulai Game
 function startGame(level) {
-  currentLevel = level;
+  difficulty = level;
   score = 0;
+
   document.getElementById('level-selection').style.display = 'none';
   document.getElementById('game-container').style.display = 'block';
-  nextQuestion();
+
+  generateNewQuestion();
 }
 
-// Fungsi Soal Baru
-function nextQuestion() {
-  const [question, answer] = generateQuestion();
-  document.getElementById('question').innerText = question;
+// Fungsi untuk Menghasilkan Soal Baru
+function generateNewQuestion() {
+  currentQuestion = generateQuestion(difficulty);
+  document.getElementById('question').innerText = currentQuestion.question;
   document.getElementById('answer').value = '';
-  document.getElementById('notif').style.display = 'none';
-  timer = setTimeout(() => gameOver('Waktu habis!'), currentLevel === 'easy' ? 15000 : 30000);
-}
-
-// Fungsi Membuat Soal
-function generateQuestion() {
-  let num1, num2, operation, question, answer;
-
-  if (currentLevel === 'easy') {
-    num1 = Math.floor(Math.random() * 10) + 1;
-    num2 = Math.floor(Math.random() * 10) + 1;
-  } else if (currentLevel === 'medium') {
-    num1 = Math.floor(Math.random() * 10) + 1;
-    num2 = Math.floor(Math.random() * 10) + 1;
-  }
-
-  const operations = ['+', '-', '×']; // Hilangkan pembagian
-  operation = operations[Math.floor(Math.random() * operations.length)];
-
-  if (operation === '+') {
-    answer = num1 + num2;
-  } else if (operation === '-') {
-    answer = num1 - num2;
-  } else if (operation === '×') {
-    answer = num1 * num2;
-  }
-
-  question = `${num1} ${operation} ${num2}`;
-  return [question, answer];
 }
 
 // Fungsi Submit Jawaban
 function submitAnswer() {
   const userAnswer = parseInt(document.getElementById('answer').value);
-  const correctAnswer = eval(document.getElementById('question').innerText.replace('×', '*'));
 
-  clearTimeout(timer);
-
-  if (userAnswer === correctAnswer) {
+  if (userAnswer === currentQuestion.answer) {
     score++;
-    document.getElementById('notif').innerText = 'Benar!';
-    document.getElementById('notif').classList.add('success');
-    document.getElementById('notif').style.display = 'block';
-    nextQuestion();
+    alert('Benar!');
+    generateNewQuestion();
   } else {
-    gameOver('Jawaban salah!');
-  }
-}
+    alert('Salah! Game berakhir.');
+    if (score > highScore) {
+      highScore = score;
+      localStorage.setItem(`${username}-highscore`, highScore);
+    }
 
-// Fungsi Game Over
-function gameOver(reason) {
-  clearTimeout(timer);
-  alert(`${reason}\nSkor kamu: ${score}`);
-
-  if (score > highScore) {
-    highScore = score;
-    localStorage.setItem(`${username}-highscore`, highScore);
+    document.getElementById('game-container').style.display = 'none';
+    document.getElementById('level-selection').style.display = 'block';
+    document.getElementById('highscore-display').innerText = highScore;
   }
 
-  document.getElementById('game-container').style.display = 'none';
-  document.getElementById('level-selection').style.display = 'block';
+  document.getElementById('score-display').innerText = score;
 }
 
-// Fungsi Logout
-function logout() {
-  username = '';
-  password = '';
-  document.getElementById('login-container').style.display = 'block';
-  document.getElementById('level-selection').style.display = 'none';
-  document.getElementById('game-container').style.display = 'none';
-}
+// Event Listener untuk Tombol
+document.getElementById('easy-level-btn').addEventListener('click', () => startGame('easy'));
+document.getElementById('medium-level-btn').addEventListener('click', () => startGame('medium'));
+document.getElementById('submit-btn').addEventListener('click', submitAnswer);
