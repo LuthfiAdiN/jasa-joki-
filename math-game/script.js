@@ -6,31 +6,24 @@ let score = 0;
 let highScore = 0;
 let timer = null;
 
-// Fungsi Login
-function login() {
-  const userInput = document.getElementById('username').value;
-  const passInput = document.getElementById('password').value;
+}
 
-  if (localStorage.getItem(userInput) === passInput) {
-    username = userInput;
-    highScore = parseInt(localStorage.getItem(`${username}-highscore`)) || 0;
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('level-selection').style.display = 'block';
-    alert(`Selamat datang, ${username}!`);
-  } else {
-    document.getElementById('login-message').innerText = 'Username atau password salah!';
-    document.getElementById('login-message').style.display = 'block';
-  }
+  // Simpan akun baru ke localStorage
+  localStorage.setItem(userInput, passInput);
+  localStorage.setItem(`${userInput}-highscore`, 0);
+
+  document.getElementById('login-message').innerText = 'Registrasi berhasil! Silakan login.';
+  document.getElementById('login-message').style.display = 'block';
 }
 
 // Fungsi Logout
 function logout() {
-  username = '';
-  score = 0;
+  username = null;
   highScore = 0;
+
   document.getElementById('login-container').style.display = 'block';
   document.getElementById('level-selection').style.display = 'none';
-  document.getElementById('game-container').style.display = 'none';
+  alert('Anda telah logout.');
 }
 
 // Fungsi Mulai Game
