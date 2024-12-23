@@ -162,3 +162,9 @@ button:hover {
 .container {
   animation: fadeIn 0.8s ease-in-out;
 }
+
+#login-message {
+  color: red;
+  margin-top: 10px;
+  display: none;
+}
