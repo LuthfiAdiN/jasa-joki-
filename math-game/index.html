@@ -7,36 +7,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Login Section -->
+  <!-- Login Container -->
   <div id="login-container">
-    <h2>Login</h2>
+    <h2>Login atau Registrasi</h2>
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <p id="login-message"></p>
+    <div id="login-message"></div>
+    <button id="login-btn">Login</button>
+    <button id="register-btn">Registrasi</button>
   </div>
 
   <!-- Level Selection -->
   <div id="level-selection" style="display: none;">
-    <h2>Pilih Tingkat Kesulitan</h2>
-    <button onclick="startGame('easy')">Mudah</button>
-    <button onclick="startGame('medium')">Sedang</button>
+    <h2>Selamat Datang di Game Matematika!</h2>
+    <button id="easy-level-btn">Level Mudah</button>
+    <button id="medium-level-btn">Level Sedang</button>
+    <button id="logout-btn">Logout</button>
+    <h3>Highscore: <span id="highscore-display">0</span></h3>
   </div>
 
-  <!-- Game Section -->
+  <!-- Game Container -->
   <div id="game-container" style="display: none;">
-    <h2 id="question"></h2>
+    <h2 id="question">Soal akan muncul di sini</h2>
     <input type="number" id="answer" placeholder="Jawaban Anda">
-    <button onclick="submitAnswer()">Jawab</button>
-    <p>Skor: <span id="score">0</span></p>
-    <p>Highscore: <span id="highscore">0</span></p>
-  </div>
-
-  <!-- Leaderboard Section -->
-  <div id="leaderboard-container" style="display: none;">
-    <h2>Leaderboard</h2>
-    <ul id="leaderboard-list"></ul>
-    <button onclick="logout()">Logout</button>
+    <button id="submit-btn">Submit</button>
+    <h3>Score: <span id="score-display">0</span></h3>
   </div>
 
   <script src="script.js"></script>
