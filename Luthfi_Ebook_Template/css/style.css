@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+header {
+    background-color: #444;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+footer {
+    background-color: #444;
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+main {
+    padding: 2rem;
+}
+.admin-link {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.ebook, .manage-item {
+    margin-bottom: 1rem;
+}
+.ebook img {
+    width: 150px;
+    height: auto;
+}
