@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Chapter</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Add New Chapter</h1>
+        <form id="add-chapter-form">
+            <label for="chapter-title">Chapter Title:</label>
+            <input type="text" id="chapter-title" name="chapter-title" required><br><br>
+
+            <label for="chapter-content">Chapter Content:</label>
+            <textarea id="chapter-content" name="chapter-content" rows="10" required></textarea><br><br>
+
+            <label for="chapter-image">Optional Image:</label>
+            <input type="file" id="chapter-image" name="chapter-image" accept="image/*"><br><br>
+
+            <button type="submit">Add Chapter</button>
+        </form>
+    </div>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
