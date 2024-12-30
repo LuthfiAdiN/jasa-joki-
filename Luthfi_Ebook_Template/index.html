@@ -1,31 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aetheria</title>
+    <title>Aetheria - Platform E-book</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <!-- Header -->
     <header>
-    <img src="assets/logo_Aetheria.png" alt="Logo Aetheria" class="logo">
-    <h1>Aetheria</h1>
-</header>
-    <main>
-        <h2>Available Ebooks</h2>
-        <div id="ebooks">
-            <!-- Template untuk ebook -->
-            <div class="ebook">
-                <a href="The Clockmaker's Pendulum.html">
-                    <img src="assets/The Clockmaker's Pendulum cover.webp" alt="The Clockmaker's Pendulum cover">
-                    <p>The Clockmaker's Pendulum</p>
-                </a>
+        <img src="assets/logo_Aetheria.jpg" alt="Logo Aetheria" class="logo">
+        <h1>AETHERIA</h1>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h2>E-book yang Tersedia</h2>
+        
+        <!-- Daftar E-Book -->
+        <div class="ebook-list">
+            <!-- Item E-Book 1 -->
+            <div class="ebook-item">
+                <img src="assets/cover_ebook_1.jpg" alt="Cover E-book">
+                <h3>The Clockmaker's Pendulum</h3>
             </div>
-            <!-- Copy-paste di sini untuk nambah ebook baru -->
+            
+            <!-- Item E-Book 2 -->
+            <div class="ebook-item">
+                <img src="assets/cover_ebook_2.jpg" alt="Cover E-book">
+                <h3>The Clockmaker's Pendulum</h3>
+            </div>
         </div>
-    </main>
+        
+        <!-- Form Upload E-Book -->
+        <form>
+            <label for="judul">Judul E-book</label>
+            <input type="text" id="judul" name="judul" required>
+            
+            <label for="file">Pilih File E-book</label>
+            <input type="file" id="file" name="file" accept=".pdf,.epub" required>
+            
+            <label for="deskripsi">Deskripsi E-book</label>
+            <textarea id="deskripsi" name="deskripsi" rows="4" required></textarea>
+            
+            <button type="submit">Unggah E-book</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Luthfi's Ebook Platform</p>
+        <p>© 2024 Platform E-book Luthfi</p>
     </footer>
+
 </body>
 </html>
