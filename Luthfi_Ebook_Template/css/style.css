@@ -7,28 +7,27 @@ body {
     color: #357CBE; /* Teks biru tua */
 }
 
+/* Header Styling */
 header {
+    display: flex;
+    align-items: center; /* Logo dan teks sejajar secara vertikal */
+    gap: 15px; /* Jarak antara logo dan teks */
     background-color: #A6D1E6; /* Biru pastel terang */
-    padding: 20px;
-    text-align: center;
-    color: #FFFFFF; /* Teks putih */
+    padding: 15px 20px; /* Ruang di dalam header */
     border-bottom: 2px solid #357CBE; /* Border biru tua */
+}
+
+header .logo {
+    width: 80px; /* Ukuran logo lebih besar */
+    height: auto; /* Tetap proporsional */
+    object-fit: contain; /* Agar gambar tidak terpotong */
+    border-radius: 0; /* Hapus bentuk bulat */
 }
 
 header h1 {
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Jarak antara logo dan teks */
-}
-
-header .logo {
-    width: 60px; /* Sedikit lebih besar */
-    height: 60px;
-    object-fit: cover;
-    border-radius: 50%; /* Bikin bulat */
-    border: 2px solid #FFFFFF; /* Border putih di logo */
+    color: #FFFFFF; /* Teks putih */
+    font-size: 24px; /* Ukuran teks */
 }
 
 main {
