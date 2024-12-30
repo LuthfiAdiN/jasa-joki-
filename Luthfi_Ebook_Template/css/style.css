@@ -3,8 +3,9 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F6F9FC; /* Warna abu muda */
-    color: #333333; /* Teks abu gelap */
+    background: url('background_awan.jpg') no-repeat center center fixed; /* Background awan */
+    background-size: cover;
+    color: #333333;
     line-height: 1.6;
 }
 
@@ -16,13 +17,14 @@ header {
     background: linear-gradient(90deg, #A4D8EA, #F9E0E3); /* Gradasi biru ke pink */
     padding: 15px 20px;
     color: #FFFFFF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header .logo {
-    width: 60px; /* Ukuran logo */
+    width: 60px;
     height: auto;
     object-fit: contain;
+    border-radius: 5px;
 }
 
 header h1 {
@@ -37,14 +39,14 @@ header h1 {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparansi pada background */
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Judul Kontainer */
 .container h2 {
-    font-size: 24px;
+    font-size: 26px;
     color: #2D9CDB; /* Biru cerah */
     margin-bottom: 15px;
     text-align: center;
@@ -54,7 +56,7 @@ header h1 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Jarak antar elemen */
+    gap: 15px;
     margin-bottom: 20px;
 }
 
@@ -66,11 +68,11 @@ form input[type="text"],
 form input[type="file"],
 form textarea {
     padding: 10px;
-    border: 1px solid #A4D8EA; /* Border biru muda */
+    border: 1px solid #A4D8EA;
     border-radius: 5px;
     font-size: 16px;
     width: 100%;
-    box-sizing: border-box; /* Untuk padding */
+    box-sizing: border-box;
 }
 
 form textarea {
@@ -79,7 +81,7 @@ form textarea {
 
 form button {
     align-self: flex-start;
-    background: linear-gradient(90deg, #F9E0E3, #2D9CDB); /* Gradasi pink ke biru */
+    background: linear-gradient(90deg, #F9E0E3, #2D9CDB);
     color: #FFFFFF;
     border: none;
     border-radius: 5px;
@@ -96,7 +98,7 @@ form button:hover {
 /* Daftar E-Book */
 .ebook-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsif */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     margin-top: 20px;
 }
@@ -107,20 +109,20 @@ form button:hover {
     border-radius: 10px;
     padding: 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .ebook-item:hover {
-    transform: scale(1.03); /* Membesar saat hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Bayangan lebih kuat */
+    transform: scale(1.03);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .ebook-item img {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    object-fit: cover; /* Memastikan gambar rapi */
+    object-fit: cover;
 }
 
 .ebook-item h3 {
@@ -131,7 +133,7 @@ form button:hover {
 
 /* Footer */
 footer {
-    background: #2D9CDB; /* Biru cerah */
+    background: #2D9CDB;
     color: #FFFFFF;
     text-align: center;
     padding: 15px 0;
@@ -154,6 +156,6 @@ footer p {
     }
 
     .ebook-list {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ukuran lebih kecil */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 }
