@@ -11,6 +11,19 @@ header {
     padding: 1rem;
     text-align: center;
 }
+/* Styling untuk logo */
+header h1 {
+    display: flex;
+    align-items: center; /* Agar teks dan logo sejajar */
+    gap: 10px; /* Jarak antara teks dan logo */
+}
+
+header .logo {
+    width: 50px; /* Ukuran logo */
+    height: 50px; /* Ukuran logo */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    border-radius: 50%; /* Bikin logo jadi bulat (opsional) */
+}
 footer {
     background-color: #444;
     color: #fff;
