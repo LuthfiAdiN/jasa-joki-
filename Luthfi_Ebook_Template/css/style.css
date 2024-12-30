@@ -1,82 +1,161 @@
-/* Global Styles */
+/* Global Styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif; /* Font clean */
     margin: 0;
     padding: 0;
-    background-color: #F5F5F5; /* Abu-abu muda */
-    color: #357CBE; /* Teks biru tua */
+    background-color: #FFFFFF; /* Background putih bersih */
+    color: #333333; /* Teks abu-abu gelap */
 }
 
-/* Header Styling */
+/* Header dengan Gradasi */
 header {
     display: flex;
-    align-items: center; /* Logo dan teks sejajar secara vertikal */
+    align-items: center;
     gap: 15px; /* Jarak antara logo dan teks */
-    background-color: #A6D1E6; /* Biru pastel terang */
-    padding: 15px 20px; /* Ruang di dalam header */
-    border-bottom: 2px solid #357CBE; /* Border biru tua */
+    background: linear-gradient(90deg, #A4D8EA, #2D9CDB); /* Gradasi biru */
+    padding: 15px 20px;
+    border-bottom: 2px solid #2D9CDB; /* Biru cerah */
+    color: #FFFFFF; /* Teks putih */
 }
 
 header .logo {
-    width: 80px; /* Ukuran logo lebih besar */
-    height: auto; /* Tetap proporsional */
+    width: 80px; /* Ukuran logo */
+    height: auto;
     object-fit: contain; /* Agar gambar tidak terpotong */
-    border-radius: 0; /* Hapus bentuk bulat */
+    border-radius: 0; /* Tidak bulat */
 }
 
 header h1 {
     margin: 0;
     color: #FFFFFF; /* Teks putih */
-    font-size: 24px; /* Ukuran teks */
+    font-size: 24px;
 }
 
-main {
-    padding: 20px;
-}
-
-h2 {
-    color: #357CBE; /* Judul bab biru tua */
-}
-
-.ebook {
-    background-color: #FFFFFF; /* Putih bersih */
-    border: 1px solid #A6D1E6; /* Border biru pastel */
-    border-radius: 8px;
-    margin: 20px 0;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+/* Navigasi (jika ada tambahan menu) */
+nav {
+    background: #2D9CDB; /* Biru cerah */
+    padding: 10px 20px;
     text-align: center;
-    transition: transform 0.2s ease;
 }
 
-.ebook:hover {
-    transform: scale(1.03); /* Sedikit membesar saat hover */
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
 }
 
-.ebook img {
-    max-width: 100%;
-    border-radius: 8px;
+nav a:hover {
+    text-decoration: underline; /* Garis bawah saat hover */
 }
 
-footer {
-    background-color: #357CBE; /* Biru tua */
-    color: #FFFFFF; /* Teks putih */
-    text-align: center;
-    padding: 10px;
-}
-
-/* Tombol */
+/* Tombol dengan Gradasi */
 button {
-    background-color: #FFC857; /* Kuning aksen */
-    color: #357CBE; /* Teks biru tua */
+    background: linear-gradient(90deg, #A4D8EA, #2D9CDB); /* Gradasi biru */
+    color: #FFFFFF;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #FFD37E; /* Kuning lebih terang saat hover */
+    transform: scale(1.05); /* Efek membesar saat hover */
+}
+
+/* Kontainer Konten */
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #F8FAFB; /* Background abu pastel lembut */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
+/* Judul Utama */
+.container h2 {
+    color: #2D9CDB; /* Biru cerah */
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Form Upload E-Book */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar elemen */
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="file"],
+form textarea {
+    padding: 10px;
+    border: 1px solid #A4D8EA; /* Border biru muda */
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+form textarea {
+    resize: vertical; /* Bisa diubah ukuran vertikal saja */
+}
+
+form button {
+    align-self: flex-start;
+}
+
+/* Daftar E-Book */
+.ebook-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsif */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.ebook-item {
+    background: #FFFFFF; /* Putih */
+    border: 2px solid #A4D8EA; /* Border biru muda */
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ebook-item:hover {
+    transform: scale(1.03); /* Membesar sedikit saat hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Bayangan lebih jelas */
+}
+
+.ebook-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.ebook-item h3 {
+    color: #2D9CDB;
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+/* Footer */
+footer {
+    background: #2D9CDB;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
 }
