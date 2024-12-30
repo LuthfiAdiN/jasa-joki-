@@ -3,7 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('background_awan.jpg') no-repeat center center fixed; /* Background awan */
+    background: url('assets/background_awan.jpg') no-repeat center center fixed; /* Background awan */
     background-size: cover;
     color: #333333;
     line-height: 1.6;
@@ -52,54 +52,11 @@ header h1 {
     text-align: center;
 }
 
-/* Form Upload E-Book */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-form label {
-    font-weight: bold;
-}
-
-form input[type="text"],
-form input[type="file"],
-form textarea {
-    padding: 10px;
-    border: 1px solid #A4D8EA;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-form textarea {
-    resize: vertical;
-}
-
-form button {
-    align-self: flex-start;
-    background: linear-gradient(90deg, #F9E0E3, #2D9CDB);
-    color: #FFFFFF;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-form button:hover {
-    transform: scale(1.05);
-}
-
 /* Daftar E-Book */
 .ebook-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
 }
 
@@ -109,6 +66,7 @@ form button:hover {
     border-radius: 10px;
     padding: 10px;
     text-align: center;
+    width: 80%; /* Lebar kontainer e-book */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -155,7 +113,7 @@ footer p {
         padding: 15px;
     }
 
-    .ebook-list {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    .ebook-item {
+        width: 95%; /* Lebar lebih kecil di layar kecil */
     }
 }
