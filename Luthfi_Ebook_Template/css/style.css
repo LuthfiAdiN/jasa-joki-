@@ -1,84 +1,83 @@
-:root {
-    --primary-blue: #89CFF0;
-    --secondary-blue: #CAE9FF;
-    --accent-pink: #FFE5EC;
-    --text-color: #2B4257;
-}
-
+/* Global Styles */
 body {
-    margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
-    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5; /* Abu-abu muda */
+    color: #357CBE; /* Teks biru tua */
 }
 
-nav {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 1rem;
+header {
+    background-color: #A6D1E6; /* Biru pastel terang */
+    padding: 20px;
+    text-align: center;
+    color: #FFFFFF; /* Teks putih */
+    border-bottom: 2px solid #357CBE; /* Border biru tua */
+}
+
+header h1 {
+    margin: 0;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    backdrop-filter: blur(5px);
+    justify-content: center;
+    gap: 10px; /* Jarak antara logo dan teks */
 }
 
-.logo img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    background: transparent;
+header .logo {
+    width: 60px; /* Sedikit lebih besar */
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%; /* Bikin bulat */
+    border: 2px solid #FFFFFF; /* Border putih di logo */
 }
 
-h1 {
-    color: var(--text-color);
-    margin: 0;
+main {
+    padding: 20px;
 }
 
-.cloud-bg {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="white" fill-opacity="0.3" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
-    min-height: calc(100vh - 82px);
-    padding: 2rem;
+h2 {
+    color: #357CBE; /* Judul bab biru tua */
 }
 
-.books-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.book-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    padding: 1rem;
+.ebook {
+    background-color: #FFFFFF; /* Putih bersih */
+    border: 1px solid #A6D1E6; /* Border biru pastel */
+    border-radius: 8px;
+    margin: 20px 0;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Efek bayangan */
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
-.book-card:hover {
-    transform: translateY(-5px);
+.ebook:hover {
+    transform: scale(1.03); /* Sedikit membesar saat hover */
 }
 
-.book-card img {
-    width: 100%;
-    max-width: 200px;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+.ebook img {
+    max-width: 100%;
+    border-radius: 8px;
 }
 
-.read-btn {
-    display: inline-block;
-    background: var(--primary-blue);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    text-decoration: none;
-    transition: background 0.3s ease;
+footer {
+    background-color: #357CBE; /* Biru tua */
+    color: #FFFFFF; /* Teks putih */
+    text-align: center;
+    padding: 10px;
 }
 
-.read-btn:hover {
-    background: var(--text-color);
+/* Tombol */
+button {
+    background-color: #FFC857; /* Kuning aksen */
+    color: #357CBE; /* Teks biru tua */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #FFD37E; /* Kuning lebih terang saat hover */
 }
